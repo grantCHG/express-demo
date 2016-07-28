@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>weixin app</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+ <button id="open_app">点击拉起</button>
+</body>
+<script type="text/javascript">
+	var btn_open = document.getElementById('open_app');
+	btn_open.addEventListener('click', function() {
+    // open_app.src = 'https://www.domain.com/site/download?force=1';
+    setTimeout(function() {
+        location.href = 'https://www.domain.com/site/download?force=1';
+    }, 1000);
+}, false);
+
+</script>
+</html>

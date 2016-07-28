@@ -1,0 +1,30 @@
+{
+  "apps": [{
+    "name": "express-demo",
+    "script": "bin/www",
+    "log_date_format": "YYYY-MM-DD HH:mm:SS",
+    "merge_logs": true,
+    "log_file": "./logs/express_demo.log",
+    "error_file": "./logs/express_demo_Err.log",
+    "out_file": "./logs/express_demo_Out.log",
+    "pid_file": "./logs/express_demo.pid",
+    "exec_mode": "cluster",
+    "instances": "1",
+    "max_restarts": 1000,
+    "max_memory_restart": "5G",
+    "watch": true,
+    "ignore_watch":["node_modules","logs"],
+    "env_production": {
+      "NODE_ENV": "production"
+    },
+    "env_dev": {
+      "NODE_ENV": "dev"
+    },
+    "env_test": {
+      "NODE_ENV": "test"
+    },
+    "env_prepare": {
+      "NODE_ENV": "prepare"
+    }
+  }]
+}
