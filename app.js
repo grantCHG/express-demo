@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var hbs = require("hbs");
 var app = express();
 
@@ -15,12 +14,12 @@ var app = express();
 //app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
-var hbs1 = hbs.create();
+//var hbs1 = hbs.create();
 
-app.set('views', path.join(__dirname, 'views/partials'));
+app.set('views', path.join(__dirname, 'static'));
 app.set('view engine', 'html');
-app.engine('html', hbs1.__express);
-hbs1.registerPartials(path.join(__dirname, 'views/partials'));
+app.engine('html', hbs.__express);
+hbs.registerPartials(path.join(__dirname, 'static/partials'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -30,7 +29,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,7 +41,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-/*if (app.get('env') === 'development') {
+if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -51,17 +49,17 @@ app.use(function(req, res, next) {
       error: err
     });
   });
-}*/
+}
 
 // production error handler
 // no stacktraces leaked to user
-/*app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
     error: {}
   });
-});*/
+});
 
 
 module.exports = app;
